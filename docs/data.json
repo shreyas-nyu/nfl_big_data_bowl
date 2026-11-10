@@ -1,0 +1,289 @@
+{
+"coverages": [
+"Cover-0",
+"Cover-1",
+"2-Man",
+"Cover-2",
+"Cover-3",
+"Cover-6",
+"Quarters"
+],
+"skills": [
+"All",
+"WR",
+"TE",
+"RB"
+],
+"views": {
+"Cover-0__All": {
+"img": "assets/Cover0__All.png",
+"n": 1056,
+"avg_sep": 2.61,
+"call": "Cover-0 is softest intermediate left (~11 yd, -0.0\u03c3). Put a receiver in that window.",
+"top_depth": 11.2,
+"top_val": -0.0
+},
+"Cover-0__WR": {
+"img": "assets/Cover0__WR.png",
+"n": 673,
+"avg_sep": 2.49,
+"call": "Cover-0 is softest intermediate left (~9 yd, +0.0\u03c3). Put WR in that window.",
+"top_depth": 8.8,
+"top_val": 0.03
+},
+"Cover-0__TE": {
+"img": "assets/Cover0__TE.png",
+"n": 257,
+"avg_sep": 2.57,
+"call": "Cover-0 is softest short right (~6 yd, -0.1\u03c3). Put TE in that window.",
+"top_depth": 6.2,
+"top_val": -0.1
+},
+"Cover-0__RB": {
+"img": "assets/Cover0__RB.png",
+"n": 126,
+"avg_sep": 3.32,
+"call": "Not enough routes in this split to call it.",
+"top_depth": null,
+"top_val": null
+},
+"Cover-0__bars": {
+"TE": 2.57,
+"WR": 2.49,
+"RB": 3.32
+},
+"Cover-1__All": {
+"img": "assets/Cover1__All.png",
+"n": 8072,
+"avg_sep": 2.2,
+"call": "Cover-1 is softest deep right (~19 yd, -0.1\u03c3). Put a receiver in that window.",
+"top_depth": 18.8,
+"top_val": -0.12
+},
+"Cover-1__WR": {
+"img": "assets/Cover1__WR.png",
+"n": 4828,
+"avg_sep": 1.96,
+"call": "Cover-1 is softest deep right (~19 yd, -0.1\u03c3). Put WR in that window.",
+"top_depth": 18.8,
+"top_val": -0.12
+},
+"Cover-1__TE": {
+"img": "assets/Cover1__TE.png",
+"n": 1829,
+"avg_sep": 2.04,
+"call": "Cover-1 is softest short right (~6 yd, -0.2\u03c3). Put TE in that window.",
+"top_depth": 6.2,
+"top_val": -0.15
+},
+"Cover-1__RB": {
+"img": "assets/Cover1__RB.png",
+"n": 1415,
+"avg_sep": 3.26,
+"call": "Cover-1 is softest short middle (~6 yd, -0.1\u03c3). Put RB in that window.",
+"top_depth": 6.2,
+"top_val": -0.09
+},
+"Cover-1__bars": {
+"TE": 2.04,
+"WR": 1.96,
+"RB": 3.26
+},
+"2-Man__All": {
+"img": "assets/2Man__All.png",
+"n": 771,
+"avg_sep": 2.13,
+"call": "2-Man is softest intermediate left (~9 yd, -0.1\u03c3). Put a receiver in that window.",
+"top_depth": 8.8,
+"top_val": -0.13
+},
+"2-Man__WR": {
+"img": "assets/2Man__WR.png",
+"n": 466,
+"avg_sep": 1.92,
+"call": "Not enough routes in this split to call it.",
+"top_depth": null,
+"top_val": null
+},
+"2-Man__TE": {
+"img": "assets/2Man__TE.png",
+"n": 163,
+"avg_sep": 1.87,
+"call": "Not enough routes in this split to call it.",
+"top_depth": null,
+"top_val": null
+},
+"2-Man__RB": {
+"img": "assets/2Man__RB.png",
+"n": 142,
+"avg_sep": 3.15,
+"call": "Not enough routes in this split to call it.",
+"top_depth": null,
+"top_val": null
+},
+"2-Man__bars": {
+"TE": 1.87,
+"WR": 1.92,
+"RB": 3.15
+},
+"Cover-2__All": {
+"img": "assets/Cover2__All.png",
+"n": 4559,
+"avg_sep": 4.23,
+"call": "Cover-2 is softest intermediate right (~14 yd, +0.6\u03c3). Put a receiver in that window.",
+"top_depth": 13.8,
+"top_val": 0.59
+},
+"Cover-2__WR": {
+"img": "assets/Cover2__WR.png",
+"n": 2645,
+"avg_sep": 3.8,
+"call": "Cover-2 is softest deep right (~16 yd, +0.6\u03c3). Put WR in that window.",
+"top_depth": 16.2,
+"top_val": 0.61
+},
+"Cover-2__TE": {
+"img": "assets/Cover2__TE.png",
+"n": 1028,
+"avg_sep": 4.17,
+"call": "Cover-2 is softest short right (~6 yd, +0.5\u03c3). Put TE in that window.",
+"top_depth": 6.2,
+"top_val": 0.5
+},
+"Cover-2__RB": {
+"img": "assets/Cover2__RB.png",
+"n": 886,
+"avg_sep": 5.6,
+"call": "Cover-2 is softest short middle (~4 yd, +0.5\u03c3). Put RB in that window.",
+"top_depth": 3.8,
+"top_val": 0.46
+},
+"Cover-2__bars": {
+"TE": 4.17,
+"WR": 3.8,
+"RB": 5.6
+},
+"Cover-3__All": {
+"img": "assets/Cover3__All.png",
+"n": 10809,
+"avg_sep": 3.73,
+"call": "Cover-3 is softest intermediate right (~9 yd, +0.5\u03c3). Put a receiver in that window.",
+"top_depth": 8.8,
+"top_val": 0.47
+},
+"Cover-3__WR": {
+"img": "assets/Cover3__WR.png",
+"n": 6228,
+"avg_sep": 3.43,
+"call": "Cover-3 is softest intermediate right (~9 yd, +0.5\u03c3). Put WR in that window.",
+"top_depth": 8.8,
+"top_val": 0.45
+},
+"Cover-3__TE": {
+"img": "assets/Cover3__TE.png",
+"n": 2464,
+"avg_sep": 3.57,
+"call": "Cover-3 is softest intermediate middle (~9 yd, +0.3\u03c3). Put TE in that window.",
+"top_depth": 8.8,
+"top_val": 0.26
+},
+"Cover-3__RB": {
+"img": "assets/Cover3__RB.png",
+"n": 2117,
+"avg_sep": 4.78,
+"call": "Cover-3 is softest short middle (~4 yd, +0.4\u03c3). Put RB in that window.",
+"top_depth": 3.8,
+"top_val": 0.36
+},
+"Cover-3__bars": {
+"TE": 3.57,
+"WR": 3.43,
+"RB": 4.78
+},
+"Cover-6__All": {
+"img": "assets/Cover6__All.png",
+"n": 3464,
+"avg_sep": 3.68,
+"call": "Cover-6 is softest short left (~4 yd, +0.2\u03c3). Put a receiver in that window.",
+"top_depth": 3.8,
+"top_val": 0.25
+},
+"Cover-6__WR": {
+"img": "assets/Cover6__WR.png",
+"n": 1985,
+"avg_sep": 3.4,
+"call": "Cover-6 is softest intermediate right (~14 yd, +0.3\u03c3). Put WR in that window.",
+"top_depth": 13.8,
+"top_val": 0.28
+},
+"Cover-6__TE": {
+"img": "assets/Cover6__TE.png",
+"n": 787,
+"avg_sep": 3.41,
+"call": "Cover-6 is softest short right (~4 yd, +0.2\u03c3). Put TE in that window.",
+"top_depth": 3.8,
+"top_val": 0.19
+},
+"Cover-6__RB": {
+"img": "assets/Cover6__RB.png",
+"n": 692,
+"avg_sep": 4.78,
+"call": "Cover-6 is softest short middle (~4 yd, +0.1\u03c3). Put RB in that window.",
+"top_depth": 3.8,
+"top_val": 0.13
+},
+"Cover-6__bars": {
+"TE": 3.41,
+"WR": 3.4,
+"RB": 4.78
+},
+"Quarters__All": {
+"img": "assets/Quarters__All.png",
+"n": 4260,
+"avg_sep": 3.63,
+"call": "Quarters is softest short left (~6 yd, +0.6\u03c3). Put a receiver in that window.",
+"top_depth": 6.2,
+"top_val": 0.58
+},
+"Quarters__WR": {
+"img": "assets/Quarters__WR.png",
+"n": 2459,
+"avg_sep": 3.42,
+"call": "Quarters is softest short right (~6 yd, +0.4\u03c3). Put WR in that window.",
+"top_depth": 6.2,
+"top_val": 0.4
+},
+"Quarters__TE": {
+"img": "assets/Quarters__TE.png",
+"n": 991,
+"avg_sep": 3.3,
+"call": "Quarters is softest short right (~4 yd, +0.2\u03c3). Put TE in that window.",
+"top_depth": 3.8,
+"top_val": 0.16
+},
+"Quarters__RB": {
+"img": "assets/Quarters__RB.png",
+"n": 810,
+"avg_sep": 4.68,
+"call": "Quarters is softest short right (~4 yd, +0.2\u03c3). Put RB in that window.",
+"top_depth": 3.8,
+"top_val": 0.17
+},
+"Quarters__bars": {
+"TE": 3.3,
+"WR": 3.42,
+"RB": 4.68
+}
+},
+"validation": {
+"complete_sep": 4.33,
+"incomplete_sep": 2.79,
+"sep_p": "4e-145",
+"target_vs_team": 0.62,
+"target_p": "1e-88",
+"svd_var": 75,
+"svd_corr": -0.8,
+"n_routes": 33018,
+"n_games": 122
+}
+}

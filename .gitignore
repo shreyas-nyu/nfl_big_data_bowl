@@ -1,0 +1,16 @@
+# Source + tracking data (re-downloadable from the public dataset; not part of submission)
+data/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+
+# Regenerable cache (figures are kept; the parquet rebuilds via src.build_dataset)
+outputs/*.parquet
+outputs/*.npy
