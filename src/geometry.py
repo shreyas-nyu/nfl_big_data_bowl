@@ -141,24 +141,19 @@ def controlled_area(target_xy: np.ndarray,
     Returns area in square yards.
     """
     eff_all = _effective_positions(all_xy, all_vel, tau)
-    eff_tgt = _effective_positions(target_xy[None, :],
-                                   None if target_vel is None else target_vel[None, :],
-                                   tau)[0]
-    # identify target row in all_xy by exact position match (pre-shift)
-    # safer: append target explicitly and treat as index 0
-    pts_players = np.vstack([eff_tgt[None, :], eff_all])
+    # locate the target WITHIN all_xy (do not duplicate it, or it wins ties twice
+    # and breaks the Voronoi partition). Match on the original (pre-shift) position.
+    tgt_idx = int(np.argmin(np.linalg.norm(all_xy - target_xy[None, :], axis=1)))
 
     # grid bounds: field width, local depth band around players
     x_lo = max(0.0, all_xy[:, 0].min() - depth_band)
     x_hi = min(FIELD_X, all_xy[:, 0].max() + depth_band)
-    y_lo = max(0.0 + 0.0, 0.0)
-    y_hi = FIELD_Y
     gx = np.arange(x_lo, x_hi + 1e-9, grid_res)
-    gy = np.arange(y_lo, y_hi + 1e-9, grid_res)
+    gy = np.arange(0.0, FIELD_Y + 1e-9, grid_res)
     GX, GY = np.meshgrid(gx, gy)
     P = np.stack([GX.ravel(), GY.ravel()], axis=1)           # (N,2)
 
-    d = np.linalg.norm(P[:, None, :] - pts_players[None, :, :], axis=2)  # (N, k+1)
-    owner = d.argmin(axis=1)                                  # 0 == target
+    d = np.linalg.norm(P[:, None, :] - eff_all[None, :, :], axis=2)  # (N, k)
+    owner = d.argmin(axis=1)
     cell_area = grid_res * grid_res
-    return float((owner == 0).sum() * cell_area)
+    return float((owner == tgt_idx).sum() * cell_area)

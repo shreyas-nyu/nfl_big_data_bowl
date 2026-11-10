@@ -145,13 +145,15 @@ def main():
             render_field(z, xe, ye, f"{OUT}/{img}")
             spot = top_softspot(z, xe, ye)
             sub = df[(df.pff_passCoverage == cov) & _skill_mask(df, sk)]
+            n = int(len(sub))
             data["views"][key] = {
                 "img": img,
-                "n": int(len(sub)),
-                "avg_sep": round(float(sub.separation.mean()), 2) if len(sub) else None,
-                "call": make_call(cov, sk, spot, sub.separation.mean() if len(sub) else 0),
+                "n": n,
+                "avg_sep": round(float(sub.separation.mean()), 2) if n else None,
+                "call": make_call(cov, sk, spot, sub.separation.mean() if n else 0),
                 "top_depth": round(spot[0], 1) if spot else None,
                 "top_val": round(spot[2], 2) if spot else None,
+                "low_sample": n < 250,   # flag thin splits so the UI can caveat honestly
             }
         # skill bars for this coverage (avg sep)
         bars = {}

@@ -53,6 +53,11 @@
   .opt.on .tick{background:var(--accent);border-color:var(--accent);
     box-shadow:0 0 0 3px rgba(54,224,122,.14)}
   .row{display:flex;flex-wrap:wrap;gap:6px}
+  .static-val{font-size:13px;font-weight:600;color:var(--ink)}
+  .static-val .hint{display:block;font-size:11px;font-weight:400;color:var(--dim);margin-top:3px;font-family:var(--mono)}
+  .lowsample{margin-top:14px;font-size:11px;color:var(--amber);font-family:var(--mono);
+    display:none;border-left:2px solid var(--amber);padding-left:10px;line-height:1.5}
+  .lowsample.show{display:block}
   .seg{padding:5px 11px;border:1px solid var(--line);border-radius:6px;
     font-size:12px;font-weight:600;color:var(--mut);cursor:pointer;transition:.12s;
     font-family:var(--body)}
@@ -134,10 +139,6 @@
   <!-- SIDEBAR -->
   <aside class="sidebar">
     <div class="grp">
-      <h4>View</h4>
-      <div id="views"></div>
-    </div>
-    <div class="grp">
       <h4>Coverage</h4>
       <div class="row" id="covs"></div>
     </div>
@@ -147,7 +148,11 @@
     </div>
     <div class="grp">
       <h4>Measured at</h4>
-      <div class="row" id="moment"></div>
+      <div class="static-val">Throw <span class="hint">(ball release)</span></div>
+    </div>
+    <div class="grp">
+      <h4>Metric</h4>
+      <div class="static-val">Separation Surplus <span class="hint">(σ vs league per zone)</span></div>
     </div>
   </aside>
 
@@ -162,6 +167,7 @@
       <img id="field" alt="soft-spot field"/>
     </div>
     <div class="legend"><span>denied</span><div class="legbar"></div><span>soft</span></div>
+    <div class="lowsample" id="lowsample"></div>
   </main>
 
   <!-- READOUT -->
@@ -202,19 +208,8 @@
 </footer>
 
 <script>
-let DATA=null, cov="Cover-3", skill="All", view="Soft-Spot Map", moment="Throw";
-const VIEWS=["Soft-Spot Map","The Window · 1 play","Raw Separation","SVD Components"];
-const MOMENTS=["Snap","Throw"];
+let DATA=null, cov="Cover-3", skill="All";
 
-function optRow(el,items,cur,on){
-  el.innerHTML="";
-  items.forEach(t=>{
-    const d=document.createElement("div");
-    d.className="opt"+(t===cur?" on":"");
-    d.innerHTML=`<span class="tick"></span><span>${t}</span>`;
-    d.onclick=()=>on(t); el.appendChild(d);
-  });
-}
 function segRow(el,items,cur,on){
   el.innerHTML="";
   items.forEach(t=>{
@@ -237,12 +232,15 @@ function render(){
     row.innerHTML=`<span class="pos">${k}</span><div class="track"><div class="fill" style="width:${100*bars[k]/mx}%"></div></div><span class="val">${bars[k]} yd</span>`;
     el.appendChild(row);
   });
+  // honest low-sample caveat
+  const ls=document.getElementById("lowsample");
+  if(v.low_sample){ls.className="lowsample show";
+    ls.textContent=`Small sample (${v.n.toLocaleString()} routes) — many zones fall below the ${8}-route display threshold, so this split is exploratory.`;
+  } else { ls.className="lowsample"; }
 }
 function refresh(){
-  optRow(document.getElementById("views"),VIEWS,view,t=>{view=t;refresh();});
   segRow(document.getElementById("covs"),DATA.coverages,cov,t=>{cov=t;refresh();});
   segRow(document.getElementById("skills"),DATA.skills,skill,t=>{skill=t;refresh();});
-  segRow(document.getElementById("moment"),MOMENTS,moment,t=>{moment=t;refresh();});
   render();
 }
 const q=new URLSearchParams(location.search);
