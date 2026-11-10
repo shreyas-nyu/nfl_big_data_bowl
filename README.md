@@ -9,6 +9,34 @@ the recommended call update live. (Self-contained — served from `docs/` on Git
 
 ![Coverage soft-spot maps](outputs/softspot_maps.png)
 
+## How this differs from NGS / ESPN / PFF separation work
+
+**Short version: NGS reports *how open a receiver was*. Soft Spots reports *where on the
+field a given coverage concedes openness* — turning separation from a per-player score
+into a transparent, per-zone, per-coverage spatial map that no public product ships.**
+
+We are explicit about the overlap and the difference:
+
+- **Shared ingredient:** the atomic measurement is nearest-defender distance — the same
+  quantity NGS calls "separation." We did not invent a new unit, and "separation predicts
+  completions" is already known. Our contribution is what we *do* with it.
+
+| | NGS separation · ESPN Open Score · PFF decision model | **Soft Spots** |
+|---|---|---|
+| **Unit of analysis** | the *player* — a leaderboard of who gets open | the *field × scheme* — a map of where space lives |
+| **Question answered** | "which receiver is open?" | "where does *this coverage* give up space, to *which position*?" |
+| **Method** | trained ML models (completion prob, open/catch/YAC, EPA) | pure geometry + linear algebra (vectors → per-zone z-score → SVD) |
+| **Auditability** | black box | every value traces back to player positions a coach can check |
+| **Who uses it** | GM / scout evaluating a player | coordinator game-planning a scheme; broadcaster explaining it |
+
+Three concrete novelties: (1) the output is a **field-centric scheme object**, not a
+player ranking; (2) it is built with **transparent geometry, not a trained model**, so it
+is fully auditable; (3) an unsupervised **SVD recovers the man-vs-zone split on its own**
+(75% variance, r = −0.80, no labels) — evidence the geometry captures real scheme
+structure. We claim it is more *interpretable, field-level, and scheme-diagnostic* than
+public separation products — **not** that it is a more accurate completion predictor
+(it is not a predictor, and we do not benchmark it as one).
+
 ## Summary (findings, methods, assumptions, limitations)
 
 **Findings.** Using 33,018 routes across 122 games (2021, Weeks 1–8), we map where each
@@ -59,12 +87,26 @@ python -m src.plot_svd           # SVD moat figure
 
 Or run `notebook.ipynb` end to end.
 
-## Why it's different
+## Use case — who reads it, and how
 
-Public products (NGS separation, ESPN Open Score, PFF/NGS decision and completion-
-probability models) are **player-centric** and built on **trained models**. This is
-**field-centric** (it grades the *scheme's* geometry, not a player) and **transparent**
-(every value traces to positions and a linear-algebra operation a coach can audit).
+**Offensive coordinator (game-plan):** pick the opponent's most-used coverage, read where
+it leaks space, and assign the skill position that wins that zone.
+> *"Their Cover-3 concedes the 12–15 yard hook zone over the middle — build a dig/sit
+> concept and put the tight end in that window."*
+
+**Defensive self-scout:** audit your own unit's conceded zones and turn them into coaching
+points.
+> *"Out of Cover-3 we give up more than the league in the intermediate middle — that's on
+> the linebackers' depth."*
+
+**Broadcaster (pregame / between-plays graphic):** narrate the green zone and the matchup,
+then pay it off live when the throw lands there.
+> *"Watch the middle of the field. All year, this defense plays Cover-3, and it gives up
+> that 12-to-15-yard window — right where the tight end lives. That's the matchup to
+> watch."*  …and after the snap: *"There it is — the completion, right in the soft spot."*
+
+It is a **season-scale scheme-tendency** tool for game-planning and broadcast scheme
+breakdowns — not a live per-play number.
 
 ## Pipeline
 
